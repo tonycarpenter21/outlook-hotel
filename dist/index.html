@@ -4,10 +4,47 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>OUTLOOK HOTEL - WHERE DREAMS GO TO DIE</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+  <nav class="nav-bar">
+    <section class="header-logo">OUTLOOK HOTEL</section>
+    <section class="nav-buttons">
+      <button class="nav-button" id="buttonHome">Logout</button>
+      <button class="nav-button" id="buttonCurrentBookings">Current Bookings</button>
+      <button class="nav-button" id="buttonNewBooking">Create Booking</button>
+    </section>
+  </nav>
+  <section class="home-view hidden" id="viewHome">
+    <section class="login-box">
+      <h1>Welcome to Outlook Hotel! </h1>
+      Login to your account below:<br/><br/>
+      <form action="">
+        <label for="username" class="hidden">USERNAME:</label>
+        <input type="text" id="username" name="username" placeholder="USERNAME"><br/><br/>
+        <label for="password" class="hidden">PASSWORD:</label>
+        <input type="text" id="password" name="password" placeholder="PASSWORD"><br/><br/>
+        <center><input type="submit" value="Submit" class="login-button" id="buttonLogin"></center>
+      </form>
+    </section>
+  </section>
+  <section class="customer-dashboard-view" id="viewCustomerDashboard">
+    <section class="dashboard-box">
+      <h1>Review Your Past, Current, and Future Bookings:</h1>
+      <br/><br/>
+      DATA GOES HERE:<br/>
+      Total Spent: $99999
+    </section>
+  </section>
+  <section class="new-booking-view hidden" id="viewNewBooking">
+    <section class="dashboard-box">
+      <h1>Book A New Stay:</h1>
+      <br/><br/>
+      CALENDAR GOES HERE:<br/>
+      RESULTS GO HERE:<br/>
+      <button class="login-button" id="buttonBookStay">Book Your Stay</button>
+    </section>
+  </section>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
