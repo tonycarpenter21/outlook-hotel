@@ -39,14 +39,38 @@
   <section class="new-booking-view" id="viewNewBooking">
     <section class="dashboard-box">
       <h1>Book A New Stay:</h1>
-      <label for="start">Booking date:</label>
-      <input type="date" id="calendar" name="trip-start" value="2021-01-14" min="2021-01-01" max="2022-12-31">
+      <label for="calendar">Booking date:</label>
+      <input type="date" id="calendar" name="trip-start" value="2022-01-14" min="2022-01-01" max="2022-12-31">
+      <section id="resultsFilter" class="results-filter">
+        <div class="filterChoice">
+          <input type="radio" id="allFilterToggle" name="all" value="all" checked="checked">
+          <label for="allFilterToggle">Show All Rooms</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="singleRoomFilterToggle" name="single" value="single">
+          <label for="singleRoomFilterToggle">Single Room</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="suiteFilterToggle" name="suite" value="suite">
+          <label for="suiteFilterToggle">Suite</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="residentialSuiteFilterToggle" name="residentialSuite" value="residentialSuite">
+          <label for="residentialSuiteFilterToggle">Residential Suite</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="juniorSuiteFilterToggle" name="juniorSuite" value="juniorSuite">
+          <label for="juniorSuiteFilterToggle">Junior Suite</label>
+        </div>
+      </section>
+      <section id="listingsHeaderMessage"></section>
+      <section class="book-listings" id="availableRoomsToBook">
+        
+      </section>
       <br/>
-      Available Rooms To Book For The Selected Day:<br/>
-      <section id="availableRoomsToBook"></section>
       <br/>
-      <br/>
-      <button class="login-button" id="buttonBookStay">Book Your Stay</button>
+      <!-- why does this button have to be here for the results to show? -->
+      <button class="login-button hidden" id="buttonBookStay">Book Your Stay</button>
     </section>
   </section>
   
