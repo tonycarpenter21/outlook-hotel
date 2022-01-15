@@ -4,10 +4,75 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>OUTLOOK HOTEL - YOU CAN CHECK IN BUT YOU CAN NEVER LEAVE</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+  <nav class="nav-bar">
+    <section class="header-logo">OUTLOOK HOTEL</section>
+    <section class="nav-buttons">
+      <button class="nav-button" id="buttonHome">Logout</button>
+      <button class="nav-button" id="buttonCurrentBookings">Current Bookings</button>
+      <button class="nav-button" id="buttonNewBooking">Create Booking</button>
+    </section>
+  </nav>
+  <section class="home-view hidden" id="viewHome">
+    <section class="login-box">
+      <h1>Welcome to Outlook Hotel! </h1>
+      Login to your account below:<br/><br/>
+      <form action="">
+        <label for="username" class="hidden">USERNAME:</label>
+        <input type="text" id="username" name="username" placeholder="USERNAME"><br/><br/>
+        <label for="password" class="hidden">PASSWORD:</label>
+        <input type="text" id="password" name="password" placeholder="PASSWORD"><br/><br/>
+        <center><input type="submit" value="Submit" class="login-button" id="buttonLogin"></center>
+      </form>
+    </section>
+  </section>
+  <section class="customer-dashboard-view hidden" id="viewCustomerDashboard">
+    <section class="dashboard-box">
+      <h1>Review Your Past, Current, and Future Bookings:</h1>
+      <br/><br/>
+      <section class="bookings" id="userBookings"></section><br/>
+      <section id="totalSpent"></section>
+    </section>
+  </section>
+  <section class="new-booking-view" id="viewNewBooking">
+    <section class="dashboard-box">
+      <h1>Book A New Stay:</h1>
+      <label for="calendar">Booking date:</label>
+      <input type="date" id="calendar" name="trip-start" value="2022-01-14" min="2022-01-01" max="2022-12-31">
+      <section id="resultsFilter" class="results-filter">
+        <div class="filterChoice">
+          <input type="radio" id="allFilterToggle" name="all" value="all" checked="checked">
+          <label for="allFilterToggle">Show All Rooms</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="singleRoomFilterToggle" name="single" value="single">
+          <label for="singleRoomFilterToggle">Single Room</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="suiteFilterToggle" name="suite" value="suite">
+          <label for="suiteFilterToggle">Suite</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="residentialSuiteFilterToggle" name="residentialSuite" value="residentialSuite">
+          <label for="residentialSuiteFilterToggle">Residential Suite</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="juniorSuiteFilterToggle" name="juniorSuite" value="juniorSuite">
+          <label for="juniorSuiteFilterToggle">Junior Suite</label>
+        </div>
+      </section>
+      <section id="listingsHeaderMessage"></section>
+      <section class="book-listings" id="availableRoomsToBook">
+        
+      </section>
+      <br/>
+      <br/>
+      <!-- why does this button have to be here for the results to show? -->
+      <button class="login-button hidden" id="buttonBookStay">Book Your Stay</button>
+    </section>
+  </section>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
