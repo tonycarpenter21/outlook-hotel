@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OUTLOOK HOTEL - WHERE DREAMS GO TO DIE</title>
+  <title>OUTLOOK HOTEL - YOU CAN CHECK IN BUT YOU CAN NEVER LEAVE</title>
 </head>
 <body>
   <nav class="nav-bar">
@@ -28,20 +28,24 @@
       </form>
     </section>
   </section>
-  <section class="customer-dashboard-view" id="viewCustomerDashboard">
+  <section class="customer-dashboard-view hidden" id="viewCustomerDashboard">
     <section class="dashboard-box">
       <h1>Review Your Past, Current, and Future Bookings:</h1>
       <br/><br/>
-      DATA GOES HERE:<br/>
-      Total Spent: $99999
+      <section class="bookings" id="userBookings"></section><br/>
+      <section id="totalSpent"></section>
     </section>
   </section>
-  <section class="new-booking-view hidden" id="viewNewBooking">
+  <section class="new-booking-view" id="viewNewBooking">
     <section class="dashboard-box">
       <h1>Book A New Stay:</h1>
-      <br/><br/>
-      CALENDAR GOES HERE:<br/>
-      RESULTS GO HERE:<br/>
+      <label for="start">Booking date:</label>
+      <input type="date" id="calendar" name="trip-start" value="2021-01-14" min="2021-01-01" max="2022-12-31">
+      <br/>
+      Available Rooms To Book For The Selected Day:<br/>
+      <section id="availableRoomsToBook"></section>
+      <br/>
+      <br/>
       <button class="login-button" id="buttonBookStay">Book Your Stay</button>
     </section>
   </section>
