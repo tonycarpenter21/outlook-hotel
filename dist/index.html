@@ -31,7 +31,6 @@
   <section class="customer-dashboard-view hidden" id="viewCustomerDashboard">
     <section class="dashboard-box">
       <h1>Review Your Past, Current, and Future Bookings:</h1>
-      <br/><br/>
       <section class="bookings" id="userBookings"></section><br/>
       <section id="totalSpent"></section>
     </section>
@@ -47,7 +46,7 @@
           <label for="allFilterToggle">Show All Rooms</label>
         </div>
         <div class="filterChoice">
-          <input type="radio" id="singleRoomFilterToggle" name="single" value="single">
+          <input type="radio" id="singleRoomFilterToggle" name="single" value="single room">
           <label for="singleRoomFilterToggle">Single Room</label>
         </div>
         <div class="filterChoice">
@@ -55,22 +54,23 @@
           <label for="suiteFilterToggle">Suite</label>
         </div>
         <div class="filterChoice">
-          <input type="radio" id="residentialSuiteFilterToggle" name="residentialSuite" value="residentialSuite">
+          <input type="radio" id="residentialSuiteFilterToggle" name="residentialSuite" value="residential suite">
           <label for="residentialSuiteFilterToggle">Residential Suite</label>
         </div>
         <div class="filterChoice">
-          <input type="radio" id="juniorSuiteFilterToggle" name="juniorSuite" value="juniorSuite">
+          <input type="radio" id="juniorSuiteFilterToggle" name="juniorSuite" value="junior suite">
           <label for="juniorSuiteFilterToggle">Junior Suite</label>
         </div>
       </section>
       <section id="listingsHeaderMessage"></section>
       <section class="book-listings" id="availableRoomsToBook">
-        
       </section>
       <br/>
       <br/>
-      <!-- why does this button have to be here for the results to show? -->
-      <button class="login-button hidden" id="buttonBookStay">Book Your Stay</button>
+    </section>
+  </section>
+  <section class="successfully-booked-room-view hidden" id="viewSuccessfullyBookedRoom">
+    <section class="booked-room-overview" id="bookedRoomOverview">
     </section>
   </section>
   

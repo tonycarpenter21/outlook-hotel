@@ -12,18 +12,31 @@ input {
   font-family: "Comic Sans MS", "Comic Sans";
 }
 
-h1 {
-  margin-top: 0px;
+h1, h2 {
+  font-size: 25px;
+  margin: 0px 0px 10px 0px;
 }
 
+h2 {
+  font-size: 20px;
+}
+
+
 button {
-  box-shadow: 0px 10px 20px #00000055;
+  box-shadow: 3px 3px 0px #00000055;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: $button-hover-background-color;
+  color: $button-hover-text-color;
+  transition: .3s;
 }
 
 .nav-bar {
-  background-color: #2372fc;
+  background-color: $nav-background;
   padding: 10px;
-  color: #FFFFFF;
+  color: $text-color;
   box-shadow: 0px 10px 20px #00000055;
   display: flex;
   justify-content: space-between;
@@ -37,9 +50,9 @@ button {
 
 .nav-button, 
 .login-button {
-  background-color: #FFFFFF;
+  background-color: $buton-backgorund-color;
   padding: 10px;
-  color: #000000;
+  color: $button-text-color;
   border: none;
   border-radius: 5px;
   font-weight: 800;
@@ -48,7 +61,8 @@ button {
 
 .home-view,
 .customer-dashboard-view,
-.new-booking-view {
+.new-booking-view, 
+.successfully-booked-room-view {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,9 +71,12 @@ button {
 
 .login-box, 
 .dashboard-box,
-.available-rooms-to-book  {
-  background-color: #033ea4;
-  color: #FFFFFF;
+.currently-booked-room,
+.available-rooms-to-book, 
+.booked-room-overview, 
+.booked-room-details {
+  background-color: $view-background-color;
+  color: $text-color;
   padding: 50px;
   border-radius: 5px;
   box-shadow: 0px 10px 20px #00000055;
@@ -72,7 +89,8 @@ button {
   margin: 100px;
 }
 
-.book-listings {
+.book-listings, 
+.bookings {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -84,7 +102,7 @@ button {
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
-  background-color: red;
+  background-color: $box-color;
   box-shadow: 0px 10px 20px #00000055;
 }
 
@@ -92,12 +110,24 @@ button {
   padding: 0px 20px;
 }
 
-.available-rooms-to-book {
-  background-color: red;
+.currently-booked-room,
+.available-rooms-to-book,
+.booked-room-details {
+  background-color: $box-color;
   padding: 20px;
   margin: 20px;
   min-height: 100px;
   min-width: auto;
+}
+
+.booked-room-details {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bookingDetailsNavigation {
+  margin: 25px;
 }
 
 .hidden {
