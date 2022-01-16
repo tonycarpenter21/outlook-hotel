@@ -4,36 +4,7 @@ import './css/base.scss';
 import Customers from './classes/Customers.js';
 import Bookings from './classes/Bookings.js';
 import Rooms from './classes/Rooms.js';
-
-////// eventually break down the following into it's own file:
-// import {customersAPI, roomsAPI, bookingsAPI,} from './apiCalls';
-
-const customersAPI = fetch('http://localhost:3001/api/v1/customers').then(response => response.json()).catch(error => console.log(error));
-//GET single customer - http://localhost:3001/api/v1/customers/<id> where <id> will be a number of a customer's id. Sample response: object of single customer's info
-
-const roomsAPI = fetch('http://localhost:3001/api/v1/rooms').then(response => response.json()).catch(error => console.log(error));
-
-const bookingsAPI = fetch('http://localhost:3001/api/v1/bookings').then(response => response.json()).catch(error => console.log(error));
-//POST - Add new booking - required properties	{ "userID": 48, "date": "2019/09/23", "roomNumber": 4 }. Sample response: { message: 'Booking with id <id> successfully posted', newBooking: <Object with trip info just posted> }
-//DELETE - Delete single booking http://localhost:3001/api/v1/bookings/<id> where <id> will be a number of a booking's id. Sample response:	{ message: Booking #<id> has been deleted }
-
-//////end apiCall file
-
-const updateAPI = () => {
-//   return fetch('http://localhost:3001/api/v1/users', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({ userID: userId, ingredientID: ingredientId })
-//   }).then(response => response.json()).catch(error => console.log(error));
-}
-export {
-  customersAPI,
-  roomsAPI,
-  bookingsAPI,
-  updateAPI
-}
+import {customersAPI, roomsAPI, bookingsAPI, updateBookingsAPI} from './apiCalls';
 
 let customers;
 let rooms;
@@ -48,45 +19,46 @@ Promise.all([customersAPI, roomsAPI, bookingsAPI]).then(data => {
     rooms = data[1].rooms.map(room => new Rooms(room))
         // console.log('rooms :', rooms)
     bookings = data[2].bookings.map(booking => new Bookings(booking))
-        console.log('bookings: ', bookings)
+        // console.log('bookings: ', bookings)
 }).catch(error => console.log(error));
-
-
-
-var dayjs = require('dayjs')
-dayjs().format()
 
 const buttonHome = document.getElementById('buttonHome');
 const buttonCurrentBookings = document.getElementById('buttonCurrentBookings');
 const buttonNewBooking = document.getElementById('buttonNewBooking');
 const buttonLogin = document.getElementById('buttonLogin');
-const buttonBookStay = document.getElementById('buttonBookStay');
 const viewHome = document.getElementById('viewHome');
 const viewCustomerDashboard = document.getElementById('viewCustomerDashboard');
 const viewNewBooking = document.getElementById('viewNewBooking');
+const viewSuccessfullyBookedRoom = document.getElementById('viewSuccessfullyBookedRoom')
 const calendar = document.getElementById('calendar');
 const resultsFilter = document.getElementById('resultsFilter');
 const listingsHeaderMessage = document.getElementById('listingsHeaderMessage');
 const availableRoomsToBook = document.getElementById('availableRoomsToBook');
+const bookedRoomOverview = document.getElementById('bookedRoomOverview');
 
 const getRandomIndex = (arr) => {
     return Math.floor(Math.random() * arr.length);
 };
 
 const showViewHome = () => {
-    hide([viewCustomerDashboard, viewNewBooking, resultsFilter]);
+    hide([viewCustomerDashboard, viewNewBooking, resultsFilter, viewSuccessfullyBookedRoom]);
     show([viewHome]);
 };
 
 const showViewCustomerDashboard = () => {
-    hide([viewHome, viewNewBooking, resultsFilter]);
+    hide([viewHome, viewNewBooking, resultsFilter, viewSuccessfullyBookedRoom]);
     show([viewCustomerDashboard]);
     showBookings();
 };
 
 const showViewNewBooking = () => {
-    hide([viewCustomerDashboard, viewHome, resultsFilter]);
+    hide([listingsHeaderMessage, availableRoomsToBook, viewCustomerDashboard, viewHome, resultsFilter, viewSuccessfullyBookedRoom]);
     show([viewNewBooking]);
+};
+
+const showViewSuccessfullyBookedRoom = () => {
+    hide([viewNewBooking, viewCustomerDashboard, viewHome, resultsFilter]);
+    show([viewSuccessfullyBookedRoom]);
 };
 
 const hide = (array) => {
@@ -100,21 +72,46 @@ const show = (array) => {
 const loginUser = () => {
     console.log("user is logged in");
     //form may refresh page?
-}
+};
 
-const bookStay = () => {
-    console.log("stay has been booked");
-}
+const showBookingDetails = (pickedRoomNumber, pickedDate) => {
+    return `<h1>Congrats on booking your stay!</h1>
+    <h2>Room Details:</h2>
+    <section class="booked-room-details">
+        Room Number: ${pickedRoomNumber}<br/>
+        Booked Date: ${pickedDate}
+    </section>
+    <div class="bookingDetailsNavigation">
+        <button class="nav-button" id="buttonSeeCurrentBookings">See All Current Bookings</button>
+        <button class="nav-button" id="buttonCreateAnotherNewBooking">Create Another Booking</button>
+    </div>`
+};
+
+const bookRoom = (event) => {
+    let userId = parseInt(event.target.dataset.userId, 10);
+    let pickedDate = event.target.dataset.pickedDate.replace('-', '/').replace('-', '/');
+    let pickedRoomNumber = parseInt(event.target.dataset.pickedRoomNumber, 10);
+    updateBookingsAPI(userId, pickedDate, pickedRoomNumber).then(data => {
+        bookings.push(new Bookings(data.newBooking))
+        showViewSuccessfullyBookedRoom();
+        bookedRoomOverview.innerHTML = ``
+        bookedRoomOverview.innerHTML = showBookingDetails(pickedRoomNumber, pickedDate)
+        const buttonSeeCurrentBookings = document.getElementById('buttonSeeCurrentBookings');
+        const buttonCreateAnotherNewBooking = document.getElementById('buttonCreateAnotherNewBooking');
+        buttonSeeCurrentBookings.addEventListener('click', showViewCustomerDashboard);
+        buttonCreateAnotherNewBooking.addEventListener('click', showViewNewBooking);
+    });
+};
 
 const showResult = (item) => {
-    return `Date: ${item.date}, Room Number: ${item.roomNumber}<br/>`
-}
+    return `<section class="currently-booked-room"> Date: ${item.date}<br/>
+    Room Number: ${item.roomNumber}</section>`;
+};
 
 const uppercaseFirstLetter = (item) => {
     let phrase = item.split(" ").map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1)).join(' ');
     return phrase;
-}
-
+};
 
 const showRoom = (item, event) => {
     return `
@@ -129,25 +126,26 @@ const showRoom = (item, event) => {
     <center><button data-user-id="${user.id}" data-picked-date="${event.target.value}" data-picked-room-number="${item.number}" class="nav-button" buttonBookStay>Book Room</button><br/></center>
     <br/>
     </section>`
-}
+};
 
 const newBookingsAPI = () => {
     return fetch('http://localhost:3001/api/v1/bookings').then(response => response.json());
-}
+};
 
 const showBookings = () => {
     newBookingsAPI().then(response => {
+        bookings = response.bookings.map(booking => new Bookings(booking))
         const userBookings = document.getElementById('userBookings');
         const totalSpent = document.getElementById('totalSpent');
         totalSpent.innerHTML = '';
         userBookings.innerHTML = '';
-        let result = bookings.bookings.filter(booking => booking.userID === user.id);
+        let result = bookings.filter(booking => booking.userID === user.id);
         console.log(result);
         result.forEach(item => {
             userBookings.innerHTML += showResult(item);
         })
         const totalCost = result.reduce((acc, item) =>{
-            let matchingRoom = rooms.rooms.find(room => item.roomNumber === room.number) ;
+            let matchingRoom = rooms.find(room => item.roomNumber === room.number) ;
             acc += matchingRoom.costPerNight;
             return acc;
         }, 0)
@@ -156,6 +154,7 @@ const showBookings = () => {
 }
 
 const selectDate = (event) => {
+    availableRoomsToBook.innerHTML = '';
     let date = event.target.value.replace('-', '/').replace('-', '/')
     let result = rooms.filter(room => {
         let takenRooms = bookings.filter(booking => booking.roomNumber === room.number);
@@ -163,9 +162,10 @@ const selectDate = (event) => {
             return room.date === date;
         })
     })
+    show([listingsHeaderMessage, availableRoomsToBook])
     if (result.length === 0) {
         listingsHeaderMessage.innerHTML = `I'm sorry, but there are no rooms available for that date. Please search another date.`
-
+        availableRoomsToBook.innerHTML = '';
     } else {
         result.forEach(room => {
             show([resultsFilter]);
@@ -179,5 +179,5 @@ buttonHome.addEventListener('click', showViewHome);
 buttonCurrentBookings.addEventListener('click', showViewCustomerDashboard);
 buttonNewBooking.addEventListener('click', showViewNewBooking);
 buttonLogin.addEventListener('click', loginUser);
-buttonBookStay.addEventListener('click', bookStay);
 calendar.addEventListener('input', selectDate);
+availableRoomsToBook.addEventListener('click', bookRoom)
