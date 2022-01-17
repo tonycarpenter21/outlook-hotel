@@ -10,22 +10,22 @@
   <nav class="nav-bar">
     <section class="header-logo">OUTLOOK HOTEL</section>
     <section class="nav-buttons">
-      <button class="nav-button" id="buttonHome">Logout</button>
-      <button class="nav-button" id="buttonCurrentBookings">Current Bookings</button>
-      <button class="nav-button" id="buttonNewBooking">Create Booking</button>
+      <button class="nav-button hidden" id="buttonHome">Logout</button>
+      <button class="nav-button hidden" id="buttonCurrentBookings">Current Bookings</button>
+      <button class="nav-button hidden" id="buttonNewBooking">Create Booking</button>
     </section>
   </nav>
-  <section class="home-view hidden" id="viewHome">
+  <section class="home-view" id="viewHome">
     <section class="login-box">
-      <h1>Welcome to Outlook Hotel! </h1>
-      Login to your account below:<br/><br/>
-      <form action="">
-        <label for="username" class="hidden">USERNAME:</label>
-        <input type="text" id="username" name="username" placeholder="USERNAME"><br/><br/>
-        <label for="password" class="hidden">PASSWORD:</label>
-        <input type="text" id="password" name="password" placeholder="PASSWORD"><br/><br/>
-        <input type="submit" value="Submit" class="login-button" id="buttonLogin">
-      </form>
+      <h1>Welcome to Outlook Hotel!</h1>
+      Login to your account below:
+      <label for="username" class="hidden">USERNAME:</label>
+      <input type="text" id="username" name="username" placeholder="USERNAME">
+      <label for="password" class="hidden">PASSWORD:</label>
+      <input type="text" id="password" name="password" placeholder="PASSWORD">
+      <input type="submit" value="Submit" class="login-button" id="buttonLogin">
+      <section class="error hidden" id="loginErrorMessage">The username or password you entered is not correct. Please try again.</section>
+      <div class="error-spacer" id="errorSpacer">&nbsp;</div>
     </section>
   </section>
   <section class="customer-dashboard-view hidden" id="viewCustomerDashboard">
@@ -35,7 +35,7 @@
       <section id="totalSpent"></section>
     </section>
   </section>
-  <section class="new-booking-view" id="viewNewBooking">
+  <section class="new-booking-view hidden" id="viewNewBooking">
     <section class="dashboard-box">
       <h1>Book A New Stay:</h1>
       <label for="calendar">Booking date:</label>

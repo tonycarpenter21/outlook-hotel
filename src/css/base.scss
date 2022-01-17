@@ -1,8 +1,10 @@
-/* This is an example of how to import a partial scss file*/
 @import '_variables';
 
 body {
-  background: $primary-background;
+  background: linear-gradient(0deg, rgba(50, 50, 50, 0.7), rgba(255, 255, 255, 0.7)), url("../images/IMG_3938.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   margin: 0px;
   font-family: "Comic Sans MS", "Comic Sans";
 }
@@ -10,6 +12,7 @@ body {
 button,
 input {
   font-family: "Comic Sans MS", "Comic Sans";
+  margin: 10px;
 }
 
 h1, h2 {
@@ -20,7 +23,6 @@ h1, h2 {
 h2 {
   font-size: 20px;
 }
-
 
 button {
   box-shadow: 3px 3px 0px #00000055;
@@ -34,6 +36,9 @@ button:hover {
 }
 
 .nav-bar {
+  width: 99.5%;
+  position: fixed;
+  top: 0;
   background-color: $nav-background;
   padding: 10px;
   color: $text-color;
@@ -56,7 +61,14 @@ button:hover {
   border: none;
   border-radius: 5px;
   font-weight: 800;
-  margin: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.error-spacer {
+  min-height: 16px;
 }
 
 .home-view,
@@ -163,7 +175,7 @@ button:hover {
       padding: 20px;
       min-width: 80%;
       min-height: 500px;
-      margin: 20px;
+      margin: 160px 20px 20px 20px;
     }
     .currently-booked-room,
     .available-rooms-to-book, {
