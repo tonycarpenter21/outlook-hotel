@@ -87,6 +87,7 @@ const showBookings = () => {
     const totalSpent = document.getElementById('totalSpent');
     clearUserBookingResults();
     let result = bookings.filter(booking => booking.userID === user.id);
+    result.sort((a,b) => a.date.localeCompare(b.date))
     result.forEach(item => {
       userBookings.innerHTML += showResult(item);
     })

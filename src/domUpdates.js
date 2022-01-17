@@ -1,5 +1,3 @@
-// import {customersAPI, roomsAPI, bookingsAPI, updateBookingsAPI} from './apiCalls';
-
 const hide = (array) => {
   array.forEach(element => element.classList.add('hidden'));
 };
@@ -55,20 +53,20 @@ const showResult = (item) => {
 const showLoginErrorMessage = () => {
   show([loginErrorMessage]);
   hide([errorSpacer])
-}
+};
 
 const clearUserBookingResults = () => {
   totalSpent.innerHTML = '';
   userBookings.innerHTML = '';
-}
+};
 
 const displayTotalSpent = (totalCost) => {
   totalSpent.innerHTML = `Total Spent: $${totalCost.toFixed(2)}`
-}
+};
 
 const clearAvailableRoomsToBook = () => {
   availableRoomsToBook.innerHTML = '';
-}
+};
 
 const showRoom = (item, date, user) => {
   return `
@@ -85,21 +83,19 @@ const showRoom = (item, date, user) => {
 
 const showListingsMessageAndAvailableRoomsToBookView = () => {
   show([listingsHeaderMessage, availableRoomsToBook])
-}
+};
 
 const showErrorListingsMessage = () => {
   listingsHeaderMessage.innerHTML = `I'm sorry, but there are no rooms available for that date. Please search another date.`
   availableRoomsToBook.innerHTML = '';
-}
+};
 
 const showListingsMessageAndAvailableRoomsToBook = (room, date, user) => {
   show([resultsFilter]);
   listingsHeaderMessage.innerHTML = `Available Rooms To Book For The Selected Day:<br/>`
   console.log(user)
   availableRoomsToBook.innerHTML += showRoom(room, date, user);
-}
-
-
+};
 
 export {
   hide, show, showViewHome, showViewNewBooking, showViewSuccessfullyBookedRoom, showBookingDetails, showResult, showCustomerDashboard, showLoginErrorMessage, clearUserBookingResults, displayTotalSpent, clearAvailableRoomsToBook, showListingsMessageAndAvailableRoomsToBookView, showErrorListingsMessage, showListingsMessageAndAvailableRoomsToBook, showRoom, uppercaseFirstLetter
