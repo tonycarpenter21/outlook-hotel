@@ -17,7 +17,7 @@ Promise.all([customersAPI, roomsAPI, bookingsAPI]).then(data => {
   user = customers[getRandomIndex(customers)];
   // console.log("user: ", user)
   rooms = data[1].rooms.map(room => new Rooms(room))
-  console.log('rooms :', rooms)
+//   console.log('rooms :', rooms)
   bookings = data[2].bookings.map(booking => new Bookings(booking))
   // console.log('bookings: ', bookings)
 }).catch(error => console.log(error));
@@ -35,33 +35,33 @@ const resultsFilter = document.getElementById('resultsFilter');
 const listingsHeaderMessage = document.getElementById('listingsHeaderMessage');
 const availableRoomsToBook = document.getElementById('availableRoomsToBook');
 const bookedRoomOverview = document.getElementById('bookedRoomOverview');
-
-
-
+let currentDate = new Date().toJSON().slice(0,10);
+document.getElementById('calendar').setAttribute('value', currentDate);
+document.getElementById('calendar').setAttribute('min', currentDate)
 
 const getRandomIndex = (arr) => {
   return Math.floor(Math.random() * arr.length);
 };
 
 const showViewHome = () => {
-  hide([viewCustomerDashboard, viewNewBooking, resultsFilter, viewSuccessfullyBookedRoom]);
+  hide([viewCustomerDashboard, viewNewBooking, resultsFilter, viewSuccessfullyBookedRoom, buttonHome, buttonCurrentBookings, buttonNewBooking]);
   show([viewHome]);
 };
-
+//buttonHome, buttonCurrentBookings, buttonNewBooking
 const showViewCustomerDashboard = () => {
-  hide([viewHome, viewNewBooking, resultsFilter, viewSuccessfullyBookedRoom]);
-  show([viewCustomerDashboard]);
+  hide([viewHome, viewNewBooking, resultsFilter, viewSuccessfullyBookedRoom, buttonCurrentBookings]);
+  show([viewCustomerDashboard, buttonHome, buttonNewBooking]);
   showBookings();
 };
 
 const showViewNewBooking = () => {
-  hide([listingsHeaderMessage, availableRoomsToBook, viewCustomerDashboard, viewHome, resultsFilter, viewSuccessfullyBookedRoom]);
-  show([viewNewBooking]);
+  hide([listingsHeaderMessage, availableRoomsToBook, viewCustomerDashboard, viewHome, resultsFilter, viewSuccessfullyBookedRoom, buttonNewBooking]);
+  show([viewNewBooking, buttonHome, buttonCurrentBookings, ]);
 };
 
 const showViewSuccessfullyBookedRoom = () => {
-  hide([viewNewBooking, viewCustomerDashboard, viewHome, resultsFilter]);
-  show([viewSuccessfullyBookedRoom]);
+  hide([viewNewBooking, viewCustomerDashboard, viewHome, resultsFilter, buttonHome, buttonCurrentBookings, buttonNewBooking]);
+  show([viewSuccessfullyBookedRoom, buttonHome, buttonCurrentBookings, buttonNewBooking]);
 };
 
 const hide = (array) => {
@@ -125,9 +125,7 @@ const showRoom = (item, date) => {
     Number of Beds: ${item.numBeds}<br/>
     Cost Per Night: $${item.costPerNight.toFixed(2)}<br/>
     Bidet: ${item.bidet ? "Yes" : "No"}<br/>
-    <br/>
-    <center><button data-user-id="${user.id}" data-picked-date="${date}" data-picked-room-number="${item.number}" class="nav-button" buttonBookStay>Book Room</button><br/></center>
-    <br/>
+    <button data-user-id="${user.id}" data-picked-date="${date}" data-picked-room-number="${item.number}" class="nav-button" buttonBookStay>Book Room</button>
     </section>`
 };
 

@@ -56,7 +56,7 @@ button:hover {
   border: none;
   border-radius: 5px;
   font-weight: 800;
-  margin: 0px 10px;
+  margin: 10px;
 }
 
 .home-view,
@@ -87,6 +87,11 @@ button:hover {
   align-items: center;
   min-height: 500px;
   margin: 100px;
+  text-align: center;
+}
+
+.available-rooms-to-book, {
+  text-align: left;
 }
 
 .book-listings, 
@@ -104,6 +109,7 @@ button:hover {
   flex-wrap: wrap;
   background-color: $box-color;
   box-shadow: 0px 10px 20px #00000055;
+  text-align: left;
 }
 
 .filterChoice {
@@ -129,6 +135,58 @@ button:hover {
 .bookingDetailsNavigation {
   margin: 25px;
 }
+
+@media screen
+  and (min-device-width: 0px)
+  and (max-device-width: 800px) {
+    .nav-bar {
+      flex-direction: column;
+    }
+    .header-logo {
+      font-size: 30px;
+      margin: 10px 10px 10px 10px;
+    }
+    .nav-button, 
+    .login-button {
+      background-color: $buton-backgorund-color;
+      padding: 10px;
+      color: $button-text-color;
+      border: none;
+      border-radius: 5px;
+      font-weight: 800;
+      margin: 7px;
+    }
+    .login-box, 
+    .dashboard-box,
+    .booked-room-overview, 
+    .booked-room-details {
+      padding: 20px;
+      min-width: 80%;
+      min-height: 500px;
+      margin: 20px;
+    }
+    .currently-booked-room,
+    .available-rooms-to-book, {
+      min-width: 60%;
+    }
+    .currently-booked-room,
+    .available-rooms-to-book,
+    .booked-room-details {
+      padding: 20px;
+      margin: 20px;
+      min-height: 50px;
+    }
+    .results-filter {
+      flex-direction: column;
+      margin: 10px;
+      padding: 10px;
+      min-width: 90%;
+    }
+    .bookingDetailsNavigation {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 
 .hidden {
   display:none;
