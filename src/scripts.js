@@ -17,7 +17,7 @@ Promise.all([customersAPI, roomsAPI, bookingsAPI]).then(data => {
     user = customers[getRandomIndex(customers)];
         // console.log("user: ", user)
     rooms = data[1].rooms.map(room => new Rooms(room))
-        // console.log('rooms :', rooms)
+        console.log('rooms :', rooms)
     bookings = data[2].bookings.map(booking => new Bookings(booking))
         // console.log('bookings: ', bookings)
 }).catch(error => console.log(error));
@@ -30,11 +30,14 @@ const viewHome = document.getElementById('viewHome');
 const viewCustomerDashboard = document.getElementById('viewCustomerDashboard');
 const viewNewBooking = document.getElementById('viewNewBooking');
 const viewSuccessfullyBookedRoom = document.getElementById('viewSuccessfullyBookedRoom')
-const calendar = document.getElementById('calendar');
+let calendar = document.getElementById('calendar');
 const resultsFilter = document.getElementById('resultsFilter');
 const listingsHeaderMessage = document.getElementById('listingsHeaderMessage');
 const availableRoomsToBook = document.getElementById('availableRoomsToBook');
 const bookedRoomOverview = document.getElementById('bookedRoomOverview');
+
+
+
 
 const getRandomIndex = (arr) => {
     return Math.floor(Math.random() * arr.length);
@@ -113,7 +116,7 @@ const uppercaseFirstLetter = (item) => {
     return phrase;
 };
 
-const showRoom = (item, event) => {
+const showRoom = (item, date) => {
     return `
     <section class="available-rooms-to-book">
     Room Number: ${item.number}<br/>
@@ -123,7 +126,7 @@ const showRoom = (item, event) => {
     Cost Per Night: $${item.costPerNight.toFixed(2)}<br/>
     Bidet: ${item.bidet ? "Yes" : "No"}<br/>
     <br/>
-    <center><button data-user-id="${user.id}" data-picked-date="${event.target.value}" data-picked-room-number="${item.number}" class="nav-button" buttonBookStay>Book Room</button><br/></center>
+    <center><button data-user-id="${user.id}" data-picked-date="${date}" data-picked-room-number="${item.number}" class="nav-button" buttonBookStay>Book Room</button><br/></center>
     <br/>
     </section>`
 };
@@ -153,15 +156,25 @@ const showBookings = () => {
     }).catch(error => console.log(error));
 }
 
-const selectDate = (event) => {
+const selectDate = () => {
+    let pickedUserDate = document.getElementById('calendar').value;
+    let date = pickedUserDate.replace('-', '/').replace('-', '/');
+    let resultsFilter = document.getElementById('resultsFilter');
+    let filterSelector = resultsFilter.querySelector('input:checked');
     availableRoomsToBook.innerHTML = '';
-    let date = event.target.value.replace('-', '/').replace('-', '/')
     let result = rooms.filter(room => {
         let takenRooms = bookings.filter(booking => booking.roomNumber === room.number);
         return !takenRooms.find(room => {
             return room.date === date;
-        })
-    })
+        });
+    });
+    if (filterSelector.value) {
+        result = result.filter(room => {
+            console.log(room.roomType)
+            console.log(filterSelector.value)
+            return room.roomType === filterSelector.value
+        });
+    };
     show([listingsHeaderMessage, availableRoomsToBook])
     if (result.length === 0) {
         listingsHeaderMessage.innerHTML = `I'm sorry, but there are no rooms available for that date. Please search another date.`
@@ -170,14 +183,15 @@ const selectDate = (event) => {
         result.forEach(room => {
             show([resultsFilter]);
             listingsHeaderMessage.innerHTML = `Available Rooms To Book For The Selected Day:<br/>`
-            availableRoomsToBook.innerHTML += showRoom(room, event);
-        })
-    }
-}
+            availableRoomsToBook.innerHTML += showRoom(room, date);
+        });
+    };
+};
 
 buttonHome.addEventListener('click', showViewHome);
 buttonCurrentBookings.addEventListener('click', showViewCustomerDashboard);
 buttonNewBooking.addEventListener('click', showViewNewBooking);
 buttonLogin.addEventListener('click', loginUser);
 calendar.addEventListener('input', selectDate);
+resultsFilter.addEventListener('input', selectDate);
 availableRoomsToBook.addEventListener('click', bookRoom)
