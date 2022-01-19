@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors Read Me
+# Outlook Hotel Read Me
 ## Contributors:
 - Tony Carpenter
 - Ryan Bahan
@@ -20,7 +20,7 @@
 **Login**
 1. Once the site application is open, you will be prompted to login. There are 50 users built into this application and you can access different user accounts by appending the login number at the end of the username to a number between 1 and 50. Use the following example login credentials:
 - USERNAME: customer50
-- PASSWORD: overlook2021***********
+- PASSWORD: overlook2021
 2. Once logged in, you will see all of your current bookings sorted by date and the total amount spent at the bottom.
 ![Current Bookings Screen](https://user-images.githubusercontent.com/88450229/150051996-fb9ea08c-7f91-4817-a9e2-7c4495f9c209.png)
 
