@@ -1,10 +1,8 @@
-const customersAPI = fetch('http://localhost:3001/api/v1/customers').then(response => response.json()).catch(error => console.log(error));
-//GET single customer - http://localhost:3001/api/v1/customers/<id> where <id> will be a number of a customer's id. Sample response: object of single customer's info
+const customersAPI = fetch('http://localhost:3001/api/v1/customers').then(response => errorCheck(response)).catch(error => console.log(error));
 
-const roomsAPI = fetch('http://localhost:3001/api/v1/rooms').then(response => response.json()).catch(error => console.log(error));
+const roomsAPI = fetch('http://localhost:3001/api/v1/rooms').then(response => errorCheck(response)).catch(error => console.log(error));
 
-const bookingsAPI = fetch('http://localhost:3001/api/v1/bookings').then(response => response.json()).catch(error => console.log(error));
-//DELETE - Delete single booking http://localhost:3001/api/v1/bookings/<id> where <id> will be a number of a booking's id. Sample response:	{ message: Booking #<id> has been deleted }
+const bookingsAPI = fetch('http://localhost:3001/api/v1/bookings').then(response => errorCheck(response)).catch(error => console.log(error));
 
 const updateBookingsAPI = (userId, pickedDate, pickedRoomNumber) => {
   return fetch('http://localhost:3001/api/v1/bookings', {
@@ -13,7 +11,15 @@ const updateBookingsAPI = (userId, pickedDate, pickedRoomNumber) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ userID: userId, date: pickedDate, roomNumber: pickedRoomNumber })
-  }).then(response => response.json()).catch(error => console.log(error));
+  }).then(response => errorCheck(response)).catch(error => console.log(error));
+}
+
+const errorCheck = (response) => {
+  if (!response.ok) {
+    throw new Error('An error has occurred.');
+  } else {
+    return response.json();
+  }
 }
 
 export {

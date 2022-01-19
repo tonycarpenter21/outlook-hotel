@@ -4,7 +4,7 @@ import Customers from './classes/Customers.js';
 import Bookings from './classes/Bookings.js';
 import Rooms from './classes/Rooms.js';
 import {customersAPI, roomsAPI, bookingsAPI, updateBookingsAPI} from './apiCalls';
-import {totalSpent, userBookings, resultsFilter, availableRoomsToBook, buttonHome, buttonCurrentBookings, buttonNewBooking, showViewHome, showViewNewBooking, generateResult, showViewSuccessfullyBookedRoom, showCustomerDashboard, showLoginErrorMessage, clearUserBookingResults, displayTotalSpent, clearAvailableRoomsToBook, showListingsMessageAndAvailableRoomsToBookView, showErrorListingsMessage, showListingsMessageAndAvailableRoomsToBook, generateBookedRoomOverview} from './domUpdates';
+import {resultsFilter, availableRoomsToBook, buttonHome, buttonCurrentBookings, buttonNewBooking, showViewHome, showViewNewBooking, generateResult, showViewSuccessfullyBookedRoom, showCustomerDashboard, showLoginErrorMessage, clearUserBookingResults, displayTotalSpent, clearAvailableRoomsToBook, showListingsMessageAndAvailableRoomsToBookView, showErrorListingsMessage, showListingsMessageAndAvailableRoomsToBook, generateBookedRoomOverview} from './domUpdates';
 
 let customers;
 let rooms;
