@@ -38,7 +38,7 @@ h2 {
 }
 
 .nav-bar {
-  width: 99.5%;
+  width: 100%;
   position: fixed;
   top: 0;
   background-color: $nav-background;
@@ -50,9 +50,13 @@ h2 {
   align-items: center;
 }
 
+.nav-buttons {
+  margin-right: 20px;
+}
+
 .header-logo {
   font-size: 40px;
-  margin: 0px 10px;
+  margin: 10px;
   font-weight: 900;
 }
 
@@ -95,7 +99,7 @@ h2 {
   @include centered-flexbox;
   flex-direction: column;
   min-height: 500px;
-  margin: 100px;
+  margin: 120px;
   text-align: center;
 }
 
@@ -153,7 +157,6 @@ h2 {
       background-color: $button-background-color;
       padding: 10px;
       color: $button-text-color;
-      border: none;
       border-radius: 5px;
       font-weight: 800;
       margin: 7px;
