@@ -15,8 +15,8 @@
       <button class="nav-button hidden" id="buttonNewBooking">Create Booking</button>
     </section>
   </nav>
-  <section class="home-view" id="viewHome">
-    <section class="login-box">
+  <section class="ux-background" id="viewHome">
+    <section class="ux-bounding-box">
       <h1>Welcome to Outlook Hotel!</h1>
       Login to your account below:
       <label for="username" class="hidden">USERNAME:</label>
@@ -28,15 +28,15 @@
       <div class="error-spacer" id="errorSpacer">&nbsp;</div>
     </section>
   </section>
-  <section class="customer-dashboard-view hidden" id="viewCustomerDashboard">
-    <section class="dashboard-box">
+  <section class="ux-background hidden" id="viewCustomerDashboard">
+    <section class="ux-bounding-box">
       <h1>Review Your Past, Current, and Future Bookings:</h1>
       <section class="bookings" id="userBookings"></section><br/>
       <section id="totalSpent"></section>
     </section>
   </section>
-  <section class="new-booking-view hidden" id="viewNewBooking">
-    <section class="dashboard-box">
+  <section class="ux-background hidden" id="viewNewBooking">
+    <section class="ux-bounding-box">
       <h1>Book A New Stay:</h1>
       <label for="calendar">Booking date:</label>
       <input type="date" id="calendar" name="trip-start" value="2022-01-14" min="2022-01-01" max="2022-12-31">
@@ -69,13 +69,10 @@
       <br/>
     </section>
   </section>
-  <section class="successfully-booked-room-view hidden" id="viewSuccessfullyBookedRoom">
-    <section class="booked-room-overview" id="bookedRoomOverview">
+  <section class="ux-background hidden" id="viewSuccessfullyBookedRoom">
+    <section class="ux-bounding-box" id="bookedRoomOverview">
     </section>
   </section>
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>

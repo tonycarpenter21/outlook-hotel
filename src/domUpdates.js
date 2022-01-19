@@ -1,3 +1,19 @@
+const viewHome = document.getElementById('viewHome');
+const viewCustomerDashboard = document.getElementById('viewCustomerDashboard');
+const viewNewBooking = document.getElementById('viewNewBooking');
+const viewSuccessfullyBookedRoom = document.getElementById('viewSuccessfullyBookedRoom');
+const resultsFilter = document.getElementById('resultsFilter');
+const buttonHome = document.getElementById('buttonHome');
+const buttonCurrentBookings = document.getElementById('buttonCurrentBookings');
+const buttonNewBooking = document.getElementById('buttonNewBooking');
+const bookedRoomOverview = document.getElementById('bookedRoomOverview');
+const loginErrorMessage = document.getElementById('loginErrorMessage');
+const errorSpacer = document.getElementById('errorSpacer');
+const listingsHeaderMessage = document.getElementById('listingsHeaderMessage');
+const availableRoomsToBook = document.getElementById('availableRoomsToBook');
+let userBookings = document.getElementById('userBookings');
+let totalSpent = document.getElementById('totalSpent');
+
 const hide = (array) => {
   array.forEach(element => element.classList.add('hidden'));
 };
@@ -27,10 +43,18 @@ const showViewSuccessfullyBookedRoom = () => {
   bookedRoomOverview.innerHTML = ``
 };
 
+const generateBookedRoomOverview = (pickedRoomNumber, pickedDate) => {
+  bookedRoomOverview.innerHTML = showBookingDetails(pickedRoomNumber, pickedDate);
+}
+
 const uppercaseFirstLetter = (item) => {
   let phrase = item.split(" ").map((letter) => letter.charAt(0).toUpperCase() + letter.substring(1)).join(' ');
   return phrase;
 };
+
+const generateResult = (item) => {
+  userBookings.innerHTML += showResult(item);
+}; 
 
 const showBookingDetails = (pickedRoomNumber, pickedDate) => {
   return `<h1>Congrats on booking your stay!</h1>
@@ -93,10 +117,42 @@ const showErrorListingsMessage = () => {
 const showListingsMessageAndAvailableRoomsToBook = (room, date, user) => {
   show([resultsFilter]);
   listingsHeaderMessage.innerHTML = `Available Rooms To Book For The Selected Day:<br/>`
-  console.log(user)
   availableRoomsToBook.innerHTML += showRoom(room, date, user);
 };
 
 export {
-  hide, show, showViewHome, showViewNewBooking, showViewSuccessfullyBookedRoom, showBookingDetails, showResult, showCustomerDashboard, showLoginErrorMessage, clearUserBookingResults, displayTotalSpent, clearAvailableRoomsToBook, showListingsMessageAndAvailableRoomsToBookView, showErrorListingsMessage, showListingsMessageAndAvailableRoomsToBook, showRoom, uppercaseFirstLetter
+  resultsFilter,
+  viewHome,
+  viewCustomerDashboard,
+  viewNewBooking,
+  viewSuccessfullyBookedRoom,
+  buttonHome,
+  buttonCurrentBookings,
+  buttonNewBooking,
+  bookedRoomOverview,
+  loginErrorMessage,
+  errorSpacer,
+  listingsHeaderMessage,
+  availableRoomsToBook,
+  userBookings,
+  totalSpent,
+  hide,
+  show,
+  showViewHome,
+  showViewNewBooking,
+  generateResult,
+  showViewSuccessfullyBookedRoom,
+  generateBookedRoomOverview,
+  showBookingDetails,
+  showResult,
+  showCustomerDashboard,
+  showLoginErrorMessage,
+  clearUserBookingResults,
+  displayTotalSpent,
+  clearAvailableRoomsToBook,
+  showListingsMessageAndAvailableRoomsToBookView,
+  showErrorListingsMessage,
+  showListingsMessageAndAvailableRoomsToBook,
+  showRoom,
+  uppercaseFirstLetter
 };

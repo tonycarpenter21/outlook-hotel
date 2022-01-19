@@ -1,18 +1,31 @@
 @import '_variables';
+@import '_media-queries';
+@import '_typography';
+@mixin centered-flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 body {
-  background: linear-gradient(0deg, rgba(50, 50, 50, 0.7), rgba(255, 255, 255, 0.7)), url("../images/IMG_3938.jpg");
+  background: linear-gradient(0deg, rgba(50, 50, 50, 0.7), rgba(255, 255, 255, 0.7)), url($photo-background);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   margin: 0px;
-  font-family: "Comic Sans MS", "Comic Sans";
+  font-family: $main-font;
 }
 
 button,
 input {
-  font-family: "Comic Sans MS", "Comic Sans";
+  font-family: $main-font;
   margin: 10px;
+}
+.login-button:hover,
+button:hover {
+  background-color: $button-hover-background-color;
+  color: $button-hover-text-color;
+  transition: .3s;
 }
 
 h1, h2 {
@@ -22,17 +35,6 @@ h1, h2 {
 
 h2 {
   font-size: 20px;
-}
-
-button {
-  box-shadow: 3px 3px 0px #00000055;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: $button-hover-background-color;
-  color: $button-hover-text-color;
-  transition: .3s;
 }
 
 .nav-bar {
@@ -51,41 +53,38 @@ button:hover {
 .header-logo {
   font-size: 40px;
   margin: 0px 10px;
+  font-weight: 900;
 }
 
 .nav-button, 
 .login-button {
-  background-color: $buton-backgorund-color;
+  background-color: $button-background-color;
   padding: 10px;
   color: $button-text-color;
+  color: white;
   border: none;
   border-radius: 5px;
   font-weight: 800;
+  box-shadow: 3px 3px 0px #00000055;
+  cursor: pointer;
+  border: solid 1px white;
 }
 
 .error {
-  color: red;
+  color: $error-text-color;
 }
 
 .error-spacer {
   min-height: 16px;
 }
 
-.home-view,
-.customer-dashboard-view,
-.new-booking-view, 
-.successfully-booked-room-view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // height: 500px;
+.ux-background {
+  @include centered-flexbox;
 }
 
-.login-box, 
-.dashboard-box,
+.ux-bounding-box, 
 .currently-booked-room,
 .available-rooms-to-book, 
-.booked-room-overview, 
 .booked-room-details {
   background-color: $view-background-color;
   color: $text-color;
@@ -93,24 +92,21 @@ button:hover {
   border-radius: 5px;
   box-shadow: 0px 10px 20px #00000055;
   min-width: 50%;
-  display: flex;
+  @include centered-flexbox;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 500px;
   margin: 100px;
   text-align: center;
 }
 
-.available-rooms-to-book, {
+.available-rooms-to-book {
   text-align: left;
 }
 
 .book-listings, 
 .bookings {
-  display:flex;
+  @include centered-flexbox;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .results-filter {
@@ -138,12 +134,6 @@ button:hover {
   min-width: auto;
 }
 
-.booked-room-details {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .bookingDetailsNavigation {
   margin: 25px;
 }
@@ -160,7 +150,7 @@ button:hover {
     }
     .nav-button, 
     .login-button {
-      background-color: $buton-backgorund-color;
+      background-color: $button-background-color;
       padding: 10px;
       color: $button-text-color;
       border: none;
@@ -168,9 +158,7 @@ button:hover {
       font-weight: 800;
       margin: 7px;
     }
-    .login-box, 
-    .dashboard-box,
-    .booked-room-overview, 
+    .ux-bounding-box, 
     .booked-room-details {
       padding: 20px;
       min-width: 80%;
