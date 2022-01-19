@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outlook Hotel - Enjoy Your Stay</title>
+</head>
+<body>
+  <nav class="nav-bar">
+    <section class="header-logo">OUTLOOK HOTEL</section>
+    <section class="nav-buttons">
+      <button class="nav-button hidden" id="buttonHome">Logout</button>
+      <button class="nav-button hidden" id="buttonCurrentBookings">Current Bookings</button>
+      <button class="nav-button hidden" id="buttonNewBooking">Create Booking</button>
+    </section>
+  </nav>
+  <section class="ux-background" id="viewHome">
+    <section class="ux-bounding-box">
+      <h1>Welcome to Outlook Hotel!</h1>
+      Login to your account below:
+      <label for="username" class="hidden">USERNAME:</label>
+      <input type="text" id="username" name="username" placeholder="USERNAME">
+      <label for="password" class="hidden">PASSWORD:</label>
+      <input type="password" id="password" name="password" placeholder="PASSWORD">
+      <input type="submit" value="Submit" class="login-button" id="buttonLogin">
+      <section class="error hidden" id="loginErrorMessage">The username or password you entered is not correct. Please try again.</section>
+      <div class="error-spacer" id="errorSpacer">&nbsp;</div>
+    </section>
+  </section>
+  <section class="ux-background hidden" id="viewCustomerDashboard">
+    <section class="ux-bounding-box">
+      <h1>Review Your Past, Current, and Future Bookings:</h1>
+      <section class="bookings" id="userBookings"></section><br/>
+      <section id="totalSpent"></section>
+    </section>
+  </section>
+  <section class="ux-background hidden" id="viewNewBooking">
+    <section class="ux-bounding-box">
+      <h1>Book A New Stay:</h1>
+      <label for="calendar">Booking date:</label>
+      <input type="date" id="calendar" name="trip-start" value="2022-01-14" min="2022-01-01" max="2022-12-31">
+      <section id="resultsFilter" class="results-filter">
+        <div class="filterChoice">
+          <input type="radio" id="allFilterToggle" name="radio" value="" checked>
+          <label for="allFilterToggle">Show All Rooms</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="singleRoomFilterToggle" name="radio" value="single room">
+          <label for="singleRoomFilterToggle">Single Room</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="suiteFilterToggle" name="radio" value="suite">
+          <label for="suiteFilterToggle">Suite</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="residentialSuiteFilterToggle" name="radio" value="residential suite">
+          <label for="residentialSuiteFilterToggle">Residential Suite</label>
+        </div>
+        <div class="filterChoice">
+          <input type="radio" id="juniorSuiteFilterToggle" name="radio" value="junior suite">
+          <label for="juniorSuiteFilterToggle">Junior Suite</label>
+        </div>
+      </section>
+      <section id="listingsHeaderMessage"></section>
+      <section class="book-listings" id="availableRoomsToBook">
+      </section>
+      <br/>
+      <br/>
+    </section>
+  </section>
+  <section class="ux-background hidden" id="viewSuccessfullyBookedRoom">
+    <section class="ux-bounding-box" id="bookedRoomOverview">
+    </section>
+  </section>
+  <script src="bundle.js"></script>
+</body>
+</html>
