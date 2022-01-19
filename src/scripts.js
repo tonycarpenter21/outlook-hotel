@@ -72,12 +72,8 @@ const showBookings = () => {
     result.forEach(item => {
       generateResult(item);
     })
-    const totalCost = result.reduce((acc, item) =>{
-      let matchingRoom = rooms.find(room => item.roomNumber === room.number);
-      acc += matchingRoom.costPerNight;
-      return acc;
-    }, 0)
-    displayTotalSpent(totalCost);
+    let totalUserCost = user.totalCost(result, rooms)
+    displayTotalSpent(totalUserCost);
   }).catch(error => console.log(error));
 }
 
