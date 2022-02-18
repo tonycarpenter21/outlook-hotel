@@ -6,7 +6,7 @@
 
 ## Technologies Used:
 - HTML
-- SCSS/CSS
+- SASS/CSS
 - Javascript
 - JSON
 - API FETCH CALLS
