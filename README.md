@@ -13,9 +13,12 @@
 
 ## Instructions for Starting and Using the Application:
 **Launch The Application**
-1. Navigate to the website deploy link here: https://tonycarpenter21.github.io/outlook-hotel/
-2. Once the site loads, you should see a home screen:
+1. Download this repo to your local machine along with https://github.com/turingschool-examples/overlook-api repo in separate folders.
+2. In the command line navigate to both repo directories and run the "npm install" command.
+3. In the command line navigate to both repo directories and run the "npm start" command.
+4. Go to `http://localhost:8080/` and you should see the web application. Once the site loads, you should see a home screen:
 ![Home Screen](https://user-images.githubusercontent.com/88450229/150051901-4a68c3eb-c7ef-4742-bc05-936dfe84703c.png)
+5. Enter `control + c` in your terminal to stop the servers at any time.
 
 **Login**
 1. Once the site application is open, you will be prompted to login. There are 50 users built into this application and you can access different user accounts by appending the login number at the end of the username to a number between 1 and 50. Use the following example login credentials:
@@ -39,10 +42,3 @@
 
 ## Future Feature Additions:
 - Create a manager view to view all current bookings for that day, total revenue, and allow the deletion of user bookings.
-
-## Local Setup
-1. Download this repo to your local machine along with https://github.com/turingschool-examples/overlook-api repo in separate folders.
-2. In the command line navigate to both repo directories and run the "npm install" command.
-3. In the command line navigate to both repo directories and run the "npm start" command.
-4. Go to `http://localhost:8080/` and you should see the web application. 
-5. Enter `control + c` in your terminal to stop the servers at any time.
