@@ -13,7 +13,7 @@
 
 ## Instructions for Starting and Using the Application:
 **Launch The Application**
-1. Navigate to the website deploy link here: https://tonycarpenter21.github.io/webpack-outlook/
+1. Navigate to the website deploy link here: https://tonycarpenter21.github.io/outlook-hotel/
 2. Once the site loads, you should see a home screen:
 ![Home Screen](https://user-images.githubusercontent.com/88450229/150051901-4a68c3eb-c7ef-4742-bc05-936dfe84703c.png)
 
